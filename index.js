@@ -63,14 +63,14 @@ const questions = [
         },
       ];
 
-inquirer.prompt(questions)
-.then(answers => {
-    console.log('User Input:');
-    console.log(answers);
-})
-.catch(error => {
-    console.error('Error:', error);
-});
+      inquirer.prompt(questions)
+      .then(answers => {
+          console.log('User Input:');
+          console.log(answers);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
 
 // TODO: Create a function to write README file
 function renderLicenseBadge(license) {
@@ -135,4 +135,9 @@ fs.writeFile("README.md", readmeContent, "utf8", (err) => {
       console.log("README.md file has been generated successfully!");
     }
   })
+});
+
+inquirer.prompt(questions).then((answers) => {
+  generateReadme(answers);
+});
 };
