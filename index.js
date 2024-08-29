@@ -63,15 +63,6 @@ const questions = [
         },
       ];
 
-      inquirer.prompt(questions)
-      .then(answers => {
-          console.log('User Input:');
-          console.log(answers);
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-
 // TODO: Create a function to write README file
 function renderLicenseBadge(license) {
     if (license === 'MIT License') {
@@ -88,56 +79,40 @@ function renderLicenseBadge(license) {
   }
 
 // TODO: Create a function to initialize app
-const generateReadme = (answers) => {
-    // Generate the content of the README file using the answers object
+inquirer.prompt(questions).then((answers) => {
     const readmeContent = `
-      #${answers.title}
-  
-      ##Description
-      ${answers.description}
-  
-      ##Table of Contents
-      - [Installation](#installation)
-      - [Usage](#usage)
-      - [Contribution](#contribution)
-      - [Tests](#tests)
-      - [License](#license)
-      - [Questions](#questions)
-  
-      ##Installation
-      ${answers.installation}
-  
-      ##Usage
-      ${answers.usage}
-  
-      ##Contribution
-      ${answers.contribution}
-  
-      ##Tests
-      ${answers.test}
-  
-      ##License
-      This project is licensed under the ${answers.license} license.
-  
-      ##Questions
-      For any questions, please contact me:
-      - GitHub: [${answers.github}](https://github.com/${answers.github})
-      - Email: ${answers.email}
-      `;
-  
-// Function call to initialize app
-inquirer.prompt(questions).then((answers) => {
-    const readmeContent = generateReadme(answers);
-fs.writeFile("README.md", readmeContent, "utf8", (err) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log("README.md file has been generated successfully!");
-    }
-  })
-});
+    # Project Title
+    ${answers.title}
+    
+    ## Description
+    ${answers.description}
+    
+    ## Installation
+    ${answers.installation}
+    
+    ## Usage
+    ${answers.usage}
+    
+    ## Contributing
+    ${answers.contribution}
+    
+    ## Tests
+    ${answers.test}
+    
+    ## License
+    This project is licensed under the ${answers.license} license.
+    
+    ## Questions
+    For any questions, please contact me:
+    - GitHub: [${answers.github}](https://github.com/${answers.github})
+    - Email: ${answers.email}
+    `;
 
-inquirer.prompt(questions).then((answers) => {
-  generateReadme(answers);
+    fs.writeFile("README.md", readmeContent, "utf8", (err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log("README.md file has been generated successfully!");
+        }
+    });
 });
-};
