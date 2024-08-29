@@ -3,7 +3,6 @@ import inquirer from "inquirer";
 import fs from "fs";
 
 // TODO: Create an array of questions for user input
-const inquirer = require('inquirer');
 const questions = [
     {
         type: 'input',
@@ -30,38 +29,39 @@ const questions = [
         name: "contribution",
         message: "What are the contribution guidelines?",
       },
-      {
-        type: "input",
-        name: "test",
-        message: "What are the test instructions?",
-      },
-      {
-        type: "list",
-        name: "license",
-        message: "What license would you like to use?",
-        choices: [
-          { name: "MIT License", value: "MIT License" },
-          { name: "Apache License 2.0", value: "Apache License 2.0" },
-          {
-            name: "GNU General Public License v3.0",
-            value: "GNU General Public License v3.0",
-          },
-          { name: "BSD 3-Clause License", value: "BSD 3-Clause License" },
-          { name: "No License", value: "No License" },
-        ],
-      },
-      {
-        type: "input",
-        name: "github",
-        message: "What is your GitHub username?",
-      },
-      {
-        type: "input",
-        name: "email",
-        message: "What is your email address?",
-      },
     
-];
+
+   {
+          type: "input",
+          name: "test",
+          message: "What are the test instructions?",
+        },
+        {
+          type: "list",
+          name: "license",
+          message: "What license would you like to use?",
+          choices: [
+            { name: "MIT License", value: "MIT License" },
+            { name: "Apache License 2.0", value: "Apache License 2.0" },
+            {
+              name: "GNU General Public License v3.0",
+              value: "GNU General Public License v3.0",
+            },
+            { name: "BSD 3-Clause License", value: "BSD 3-Clause License" },
+            { name: "No License", value: "No License" },
+          ],
+        },
+        {
+          type: "input",
+          name: "github",
+          message: "What is your GitHub username?",
+        },
+        {
+          type: "input",
+          name: "email",
+          message: "What is your email address?",
+        },
+      ];
 
 inquirer.prompt(questions)
 .then(answers => {
@@ -126,6 +126,8 @@ const generateReadme = (answers) => {
       `;
   
 // Function call to initialize app
+inquirer.prompt(questions).then((answers) => {
+    const readmeContent = generateReadme(answers);
 fs.writeFile("README.md", readmeContent, "utf8", (err) => {
     if (err) {
       console.error(err);
@@ -134,7 +136,3 @@ fs.writeFile("README.md", readmeContent, "utf8", (err) => {
     }
   })
 };
-
-inquirer.prompt(questions).then((answers) => {
-  generateReadme(answers);
-});
