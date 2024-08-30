@@ -1,12 +1,20 @@
 
     # Project Title
-    Professional README Generator
+    Challenge-7-Node Professional README Generator
     
+    ## Table of Contents
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [Contribution](#Contribution)
+  - [Tests](#Tests)
+  - [License](#License)
+  - [Questions](#Questions)
+
     ## Description
     A README with personal information.
     
     ## Installation
-    BY using node index.js in Terminal.
+    By using node.js in Terminal.
     
     ## Usage
     The usage information involves creating an interactive command-line app that prompts the user with a series of questions to gather information about a project. 

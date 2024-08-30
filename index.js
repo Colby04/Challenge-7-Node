@@ -84,6 +84,14 @@ inquirer.prompt(questions).then((answers) => {
     # Project Title
     ${answers.title}
     
+    ## Table of Contents
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [Contribution](#Contribution)
+  - [Tests](#Tests)
+  - [License](#License)
+  - [Questions](#Questions)
+
     ## Description
     ${answers.description}
     
